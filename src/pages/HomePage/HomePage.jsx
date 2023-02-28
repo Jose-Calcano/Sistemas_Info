@@ -1,37 +1,19 @@
 import React from 'react'
-import './HomePage.module.css'
+import './HomePage.css'
 import { HOME_URL, LOGIN_URL, SIGNIN_URL, CATALOGO_URL } from '../../constants/urls'
 import { Link } from 'react-router-dom'
 
 export default function HomePage() {
     return (
-        <nav id="inicio">
-            <div className="logo">
-                <img href="../../../../public/Icono.png" alt='logo' />
-            </div>
-            <ul className="nav-links">
-                <li>
-                    <Link to={CATALOGO_URL}><h3>Ver Catálogo</h3></Link>
-                </li>
+        <>
+            <header>
+                <nav>
                 <li>
                     <Link to={SIGNIN_URL}><h3>Registrarse</h3></Link>
                 </li>
                 <li>
                     <Link to={LOGIN_URL}><h3>Iniciar Sesión</h3></Link>
                 </li>
-            </ul>
-            <div className="atributo">
-                <div className="linea-1"></div>
-                <div className="linea-2"></div>
-                <div className="linea-3"></div>
-            </div>
-
-
-
-            <header>
-                <nav>
-                    <a href="#">Registrar</a>
-                    <a href="#">Inicio Sesion</a>
                     <a href="#">Plan Mensual</a>
                     <a href="#">Nuestros clientes</a>
                     <a href="#">Contacto</a>
@@ -40,11 +22,7 @@ export default function HomePage() {
                     <h1>MetroMED</h1>
                     <h2>Salud mental desde la comodidad de tu casa</h2>
                 </section>
-                <div className="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
-                    style="height: 100%; width: 100%;">
-                    <path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
-                        style="stroke: none; fill: #fff;"></path>
-                </svg></div>
+
             </header>
             <main>
                 <section className="contenedor sobre-nosotros">
@@ -128,6 +106,6 @@ export default function HomePage() {
             </main>
 
 
-        </nav>
+        </>
     )
 }
