@@ -1,7 +1,15 @@
 import React from 'react'
 import './HomePage.css'
-import { HOME_URL, LOGIN_URL, SIGNIN_URL, CATALOGO_URL } from '../../constants/urls'
-import { Link } from 'react-router-dom'
+import { HOME_URL, LOGIN_URL, SIGNIN_URL, CATALOGO_URL } from '../../constants/urls';
+import { Link } from 'react-router-dom';
+import comunidad from '../../images/comunidad.png';
+import basico from '../../images/basico.png';
+import face1 from '../../images/face1.jpg';
+import face2 from '../../images/face2.jpg';
+import medio from '../../images/medio.png';
+import portada from '../../images/portada.jpg';
+import premium from '../../images/premium.png';
+import icono1 from '../../images/icono1.png';
 
 export default function HomePage() {
     return (
@@ -28,7 +36,7 @@ export default function HomePage() {
                 <section className="contenedor sobre-nosotros">
                     <h2 className="titulo">Nuestro producto</h2>
                     <div className="contenedor-sobre-nosotros">
-                        <img href="../../../../public/comunidad.png" alt="" className="imagen-about-us" />
+                        <img src={comunidad} className="imagen-about-us" />
                         <div className="contenido-textos">
                             <h3><span>1</span>¿Quiénes Somos?</h3>
                             <p>Somos un equipo de profesionales de salud mental que a través de Terapia Online realizamos tratamientos y terapias por telemedicina. </p>
@@ -42,23 +50,23 @@ export default function HomePage() {
                         <h2 className="titulo">Planes de Pago</h2>
                         <div className="galeria-port">
                             <div className="imagen-port">
-                                <img href="../../../../public/basico.png" alt="" />
+                                <img src={basico} />
                                 <div className="hover-galeria">
                                     <img href="../../../../public/icono1.png" alt="" />
                                     <p>Plan Basico</p>
                                 </div>
                             </div>
                             <div className="imagen-port">
-                                <img href="../../../../public/medio.png" alt="" />
+                                <img src={medio}/>
                                 <div className="hover-galeria">
-                                    <img href="../../../../public/icono1.png" alt="" />
+                                    <img src={face1} />
                                     <p>Plan Medio</p>
                                 </div>
                             </div>
                             <div className="imagen-port">
-                                <img href="../../../../public/premium.png" alt="" />
+                                <img src={premium} />
                                 <div className="hover-galeria">
-                                    <img href="../../../../public/icono1.png" alt="" />
+                                    <img src={icono1} />
                                     <p>Plan Premium</p>
                                 </div>
                             </div>
@@ -69,7 +77,7 @@ export default function HomePage() {
                     <h2 className="titulo">Nuestros clientes</h2>
                     <div className="cards">
                         <div className="card">
-                            <img href="../../../../public/face1.png" alt="" />
+                            <img src={face1} />
                             <div className="contenido-texto-card">
                                 <h4>Sofia Mendes</h4>
                                 <p>"Le agradezco y le agradeceré siempre por la ayuda que me ha dado, pues he tenido
@@ -77,7 +85,7 @@ export default function HomePage() {
                             </div>
                         </div>
                         <div className="card">
-                            <img href="../../../../public/face2.png" alt="" />
+                            <img src={face2} />
                             <div className="contenido-texto-card">
                                 <h4>Emilio Cortés</h4>
                                 <p>"Excelente profesional, me ha ayudado mucho en mi proceso y los efectos
