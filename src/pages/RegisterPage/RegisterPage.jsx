@@ -1,7 +1,22 @@
 import React from 'react'
-import './RegisterPage.module.css'
+import './RegisterPage.css'
+import { HOME_URL } from '../../constants/urls';
 
 export default function RegisterPage() {
+    //const [formData] = State({});
+    //const navigate = Navigate();
+    //const Success = () => {
+    //    navigate(HOME_URL);
+    //};
+    //const Fail = (_error) => {
+    //    console.log("Registro fallido");
+    //};
+    //const Submit = async (event) => {
+    //    event.preventDefault();
+    //    await registerEmailPassword({
+    //        userData: formData, Success, Fail,
+    //    });
+    //};
     return (
         <>
         <div>RegisterPage</div>

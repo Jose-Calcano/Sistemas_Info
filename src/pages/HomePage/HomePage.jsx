@@ -1,27 +1,27 @@
 import React from 'react'
 import './HomePage.css'
-import { HOME_URL, LOGIN_URL, SIGNIN_URL, CATALOGO_URL } from '../../constants/urls';
+import { CHAT_URL, HOME_URL, LOGIN_URL, SIGNIN_URL, CATALOGO_URL } from '../../constants/urls';
 import { Link } from 'react-router-dom';
-import comunidad from '../../images/comunidad.png';
-import basico from '../../images/basico.png';
-import face1 from '../../images/face1.jpg';
-import face2 from '../../images/face2.jpg';
-import medio from '../../images/medio.png';
-import portada from '../../images/portada.jpg';
-import premium from '../../images/premium.png';
-import icono1 from '../../images/icono1.png';
+import comunidad from '../../../public/comunidad.png';
+import basico from '../../../public/basico.png';
+import face1 from '../../../public/face1.jpg';
+import face2 from '../../../public/face2.jpg';
+import medio from '../../../public/medio.png';
+import portada from '../../../public/portada.jpg';
+import premium from '../../../public/premium.png';
+import icono1 from '../../../public/icono1.png';
 
 export default function HomePage() {
     return (
         <>
             <header>
                 <nav>
-                <li>
+
                     <Link to={SIGNIN_URL}><h3>Registrarse</h3></Link>
-                </li>
-                <li>
                     <Link to={LOGIN_URL}><h3>Iniciar Sesión</h3></Link>
-                </li>
+                    <Link to={CHAT_URL}><h3>Chat</h3></Link>
+
+
                     <a href="#">Plan Mensual</a>
                     <a href="#">Nuestros clientes</a>
                     <a href="#">Contacto</a>
