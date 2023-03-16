@@ -1,1 +1,43 @@
 
+.busquedas {
+    height: 20vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(118, 164, 252);
+}
+
+.busqueda {
+    height: 40px;
+    width: 300px;
+    background-color: white;
+    font-size: 20px;
+    color:grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.doctores {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.doctores h1 {
+    margin: 30px 0;
+}
+
+.listado {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: space-around;
+    width: 100%;
+}

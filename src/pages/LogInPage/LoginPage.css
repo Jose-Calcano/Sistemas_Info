@@ -1,1 +1,85 @@
 
+.buttons {
+    height: 25vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(211, 243, 232);
+}
+
+.button {
+    height: 60px;
+    width: 200px;
+    background-color: #1b597c;
+    font-size: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formulario h1 {
+    margin: 50px 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 60px 0;
+    border: 5px solid rgb(211, 243, 232);
+    border-radius: 30px;
+}
+
+form {
+    padding: 30px;
+}
+
+.Container {
+    height: 70px;
+    width: 100%;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Container span {
+    font-size: 20px;
+}
+
+.Container input {
+    height: 50px;
+    width: 200px;
+    border-radius: 6px;
+    border: 2px blue solid;
+    text-align: center;
+    font-size: 15px;
+}
+
+.registro {
+    height: 50px;
+    width: 100px;
+    background-color: rgb(20, 20, 218);
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 15px;
+    margin: 10px 0 30px 0;
+}
+
+.registro:hover {
+    cursor: pointer;
+    background-color: rgb(77, 77, 211);
+}

@@ -1,45 +1,118 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { loginWithEmailAndPassword, signinWithGoogle } from '../../firebase/auth-service'
+import { CHAT_URL, HOME_URL, LOGIN_URL, SIGNIN_URL, CATALOGO_URL, PACIENTE_URL } from '../../constants/urls';
 import './LoginPage.css'
 
 export default function LoginPage() {
+    const [doc, setDoc] = useState(false)
+    const navigate = useNavigate()
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+    })
+
+    const handleOnChange = (event) => {
+        const { name, value } = event.target
+        setFormData({
+            ...formData,
+            [name]:value,
+        })
+    }
+
+    const handleSignInWithGoogle = async () => {
+        await signinWithGoogle()
+    }
+
+    const onSubmit = async (event) => {
+        event.preventDefault()
+        const {email, password} = formData
+        await loginWithEmailAndPassword(email, password)
+        navigate(HOME_URL)
+    }
+
     return (
         <>
-            <div>Iniciar Sesiòn</div>
+            <div className="buttons">      
+                <div className="button" onClick={() => { setDoc(false)}}>Soy un paciente</div>
+                <div className="button" onClick={() => { setDoc(true)}}>Soy un doctor</div>      
+            </div>
+            <div className="formulario">
+                <h1>Ingrese sus datos</h1>
+            {!doc ? <>
+                    <form className="form" onSubmit={onSubmit}>
+                        <h1>Paciente</h1>
 
-            <section class="titulo-ReIS">
-                <h1>Iniciar sesión</h1>
-            </section>
+                        <div className="Container">
+                            <label htmlFor="email">
+                                <span>Ingresa tu correo electrónico</span>
+                            </label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="Eg. ejemplo@correo.com"
+                                onChange={handleOnChange}
+                            />
+                        </div>
 
-            <section class="cuadros-ReIS">
-                <div class="cuadro-doc">
-                    <h4 class="ReIS-doc">Doctor</h4>
-                    <p class="texto-doc">Si eres un doctor que usa una cuenta de MetroMED inicia sesión aquí.</p>
+                        <div className="Container">
+                            <label htmlFor="contraseña">
+                                <span>Ingresa tu contraseña</span>
+                            </label>
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Eg. 12345"
+                                onChange={handleOnChange}
+                            />
+                        </div>
 
-                    <div class="cajas">
-                        <input type="text" placeholder="Correo o usuario" class="caja11" id="correo-d" />
-                        <input type="text" placeholder="Contraseña" class="caja21" id="password-d" />
-                    </div>
+                        <input type="submit" value="Iniciar Sesión" className='registro' />
+                        
+                        <button className="button" onClick={() => handleSignInWithGoogle(doc)}>Registrarse con Google</button> 
+                        
+                    </form>
+                    
+                </>
+                    :
+                <>
+                    <form className="form" onSubmit={() => { onSubmit }}>
+                            <h1>Doctor</h1>
 
-                    <div class="boton">
-                        <button id="is1" type="button">Iniciar sesión</button>
-                    </div>
+                        <div className="Container">
+                            <label htmlFor="email">
+                                <span>Ingresa tu correo electrónico</span>
+                            </label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="Eg. ejemplo@correo.com"
+                                onChange={handleOnChange}
+                            />
+                        </div>
+
+                        <div className="Container">
+                            <label htmlFor="contraseña">
+                                <span>Ingresa tu contraseña</span>
+                            </label>
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Eg. 12345"
+                                onChange={handleOnChange}    
+                            />
+                        </div>
+                            
+                        <input type="submit" value="Iniciar Sesión" className='registro'/>
+                        
+                        <button className="button" onClick={() => handleSignInWithGoogle(doc)}>Registrarse con Google</button>
+                    </form>
+                        </>}
                 </div>
-
-                <div class="cuadro-pac">
-                    <h4 class="ReIS-pac">Paciente</h4>
-                    <p class="texto-pac">Si eres un paciente que usa una cuenta de MetroMED inicia sesión aquí.</p>
-
-                    <div class="cajas">
-                        <input type="text" placeholder="Correo o usuario" class="caja12" id="correo-p" />
-                        <input type="text" placeholder="Contraseña" class="caja22" id="password-p" />
-                    </div>
-
-                    <div class="boton">
-                        <button id="is2" type="button">Iniciar sesión</button>
-                    </div>
-                </div>
-
-            </section>
         </>
     )
 }

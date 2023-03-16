@@ -1,0 +1,40 @@
+
+
+
+.body {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+}
+
+.caja {
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: rgb(102, 146, 132);
+    align-items: center;
+}
+
+.imagen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height: 400px;
+    width: 400px;
+    overflow: hidden;
+}   
+
+.imagen img {
+    object-fit: cover;
+}
+
+.info {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

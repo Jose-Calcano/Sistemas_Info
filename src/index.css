@@ -3,3 +3,32 @@
   padding:0;
   box-sizing: border-box;
 }
+
+.nav {
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(187, 123, 230);
+}
+
+.nav a {
+  font-size: 20px;
+  text-decoration: none;
+  font-style: none;
+  color:white;
+}
+
+.nav h1 {
+  font-size: 20px;
+}
+
+.nav button {
+  border:none;
+  background-color: rgb(187, 123, 230);
+  font-size: 20px;
+  color: white;
+
+}

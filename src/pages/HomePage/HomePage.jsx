@@ -1,6 +1,6 @@
 import React from 'react'
 import './HomePage.css'
-import { CHAT_URL, HOME_URL, LOGIN_URL, SIGNIN_URL, CATALOGO_URL } from '../../constants/urls';
+import { CHAT_URL, HOME_URL, LOGIN_URL, SIGNIN_URL, CATALOGO_URL, PACIENTE_URL } from '../../constants/urls';
 import { Link } from 'react-router-dom';
 import comunidad from '../../../public/comunidad.png';
 import basico from '../../../public/basico.png';
@@ -10,22 +10,18 @@ import medio from '../../../public/medio.png';
 import portada from '../../../public/portada.jpg';
 import premium from '../../../public/premium.png';
 import icono1 from '../../../public/icono1.png';
+import { useUser } from '../../contexts/UserContext';
+import { logout } from '../../firebase/auth-service';
 
 export default function HomePage() {
+
+    
+
+
     return (
         <>
             <header>
-                <nav>
 
-                    <Link to={SIGNIN_URL}><h3>Registrarse</h3></Link>
-                    <Link to={LOGIN_URL}><h3>Iniciar Sesión</h3></Link>
-                    <Link to={CHAT_URL}><h3>Chat</h3></Link>
-
-
-                    <a href="#">Plan Mensual</a>
-                    <a href="#">Nuestros clientes</a>
-                    <a href="#">Contacto</a>
-                </nav>
                 <section className="textos-header">
                     <h1>MetroMED</h1>
                     <h2>Salud mental desde la comodidad de tu casa</h2>
@@ -57,7 +53,7 @@ export default function HomePage() {
                                 </div>
                             </div>
                             <div className="imagen-port">
-                                <img src={medio}/>
+                                <img src={medio} />
                                 <div className="hover-galeria">
                                     <img src={face1} />
                                     <p>Plan Medio</p>
@@ -94,23 +90,6 @@ export default function HomePage() {
                         </div>
                     </div>
                 </section>
-                <footer>
-                    <div className="contenedor-footer">
-                        <div className="content-foo">
-                            <h4>Instagram</h4>
-                            <p>@metromed</p>
-                        </div>
-                        <div className="content-foo">
-                            <h4>Email</h4>
-                            <p>metromed@gmail.com</p>
-                        </div>
-                        <div className="content-foo">
-                            <h4>WhatsApp</h4>
-                            <p>+584141152405</p>
-                        </div>
-                    </div>
-                    <h2 className="titulo-final">&copy;Unimet Design</h2>
-                </footer>
             </main>
 
 

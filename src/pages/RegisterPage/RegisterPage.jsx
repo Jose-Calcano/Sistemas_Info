@@ -1,61 +1,163 @@
-import React from 'react'
-import './RegisterPage.css'
-import { HOME_URL } from '../../constants/urls';
+import React, { useState } from 'react'
+import "./RegisterPage.css"
+import {  DOCTOR_URL, PACIENTE_URL, CHAT_URL, HOME_URL, LOGIN_URL, SIGNIN_URL, CATALOGO_URL  } from '../../constants/urls';
+import { logout, registerWithEmailAndPassword, signinWithGoogle } from '../../firebase/auth-service';
+import { Link, useNavigate } from 'react-router-dom';
+import { useUser } from '../../contexts/UserContext';
 
 export default function RegisterPage() {
-    //const [formData] = State({});
-    //const navigate = Navigate();
-    //const Success = () => {
-    //    navigate(HOME_URL);
-    //};
-    //const Fail = (_error) => {
-    //    console.log("Registro fallido");
-    //};
-    //const Submit = async (event) => {
-    //    event.preventDefault();
-    //    await registerEmailPassword({
-    //        userData: formData, Success, Fail,
-    //    });
-    //};
+
+    const user = useUser()
+    const navigate = useNavigate()
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        password: "",
+        age: 0,
+    })
+    const [doc, setDoc] = useState(false)
+
+    const handleOnChange = (event) => {
+        const { name, value } = event.target
+        setFormData({
+            ...formData,
+            [name]:value,
+        })
+    }
+
+    const handleSignInWithGoogle = async (doc) => {
+        await signinWithGoogle(doc)
+        navigate(HOME_URL)
+    }
+
+    const onSubmit = async (event) => {
+        event.preventDefault()
+
+        const { email, password, ...extraData } = formData
+
+        await registerWithEmailAndPassword(email, password, extraData, doc)
+        navigate(HOME_URL)
+    }
+
+
+
+    const handleLogout = async () => {
+        await logout()
+    }
+
     return (
         <>
-        <div>RegisterPage</div>
-        <section class="cuadros-ReIS">
-                <h1>Registrarse</h1>
-                <div class="cuadro-doc">
-                    <h4 class="ReIS-doc">Doctor</h4>
-                    <p class="texto-doc" id="registro-doc">Si eres un doctor que está interesado en unirte a MetroMED registrate aquí.</p>
+            
+            <div className="buttons">      
+                <div className="button" onClick={() => { setDoc(false)}}>Soy un paciente</div>
+                <div className="button" onClick={() => { setDoc(true)}}>Soy un doctor</div>      
+            </div>
+            <div className="formulario">
 
-                    <div class="cajas">
-                        <input type="text" placeholder="Correo" class="caja11" id="correo-d" />
-                        <input type="text" placeholder="Nombre de usuario" class="caja21" id="usuario-d" />
-                        <input type="text" placeholder="Contraseña" class="caja31" id="password-d" />
-                        <input type="text" placeholder="Repite contraseña" class="caja41" id="password2-d" />
-                    </div>
+                <h1>Cree su cuenta</h1>
+                {!doc ? <>
+                    <form className="form" onSubmit={onSubmit}>
+                        <h1>Paciente</h1>
 
-                    <div class="boton">
-                        <button id="registrarse1" type="button">Registrarse</button>
-                    </div>
+                        <div className="Container">
+                            <label htmlFor="name">
+                                <span>Ingresa tu nombre</span>
+                            </label>
+                            <input
+                                type="text"
+                                name="name"
+                                id="name"
+                                placeholder="Eg. León Serpa"
+                                onChange={handleOnChange}
+                            />
+                        </div>
+
+                        <div className="Container">
+                            <label htmlFor="email">
+                                <span>Ingresa tu correo electrónico</span>
+                            </label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="Eg. ejemplo@correo.com"
+                                onChange={handleOnChange}
+                            />
+                        </div>
+
+                        <div className="Container">
+                            <label htmlFor="contraseña">
+                                <span>Ingresa tu contraseña</span>
+                            </label>
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Eg. 12345"
+                                onChange={handleOnChange}
+                            />
+                        </div>
+
+                        <input type="submit" value="Registrar" className="registro"/>
+
+                        <button className="button" onClick={() => handleSignInWithGoogle(doc)}>Registrarse con Google</button> 
+                        
+                    </form>
+                    
+                </>
+                    :
+                <>
+                    <form className="form" onSubmit={onSubmit}>
+                            <h1>Doctor</h1>
+                            
+                            <div className="Container">
+                            <label htmlFor="name">
+                                <span>Ingresa tu nombre</span>
+                            </label>
+                            <input
+                                type="text"
+                                name="name"
+                                id="name"
+                                placeholder="Eg. León Serpa"
+                                onChange={handleOnChange}
+                            />
+                        </div>
+
+                        <div className="Container">
+                            <label htmlFor="email">
+                                <span>Ingresa tu correo electrónico</span>
+                            </label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="Eg. ejemplo@correo.com"
+                                onChange={handleOnChange}
+                            />
+                        </div>
+
+                        <div className="Container">
+                            <label htmlFor="contraseña">
+                                <span>Ingresa tu contraseña</span>
+                            </label>
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Eg. 12345"
+                                onChange={handleOnChange}    
+                            />
+                        </div>
+                            
+                            <input type="submit" value="Registrar" className='registro'/>
+                        
+                        <button className="button" onClick={() => handleSignInWithGoogle(doc)}>Registrarse con Google</button>
+                        
+                    </form>
+                        
+                        </>}
                 </div>
 
-                <div class="cuadro-pac">
-                    <h4 class="ReIS-pac">Paciente</h4>
-                    <p class="texto-pac">Si quieres un psicólogo y estás interesado en unirte a MetroMED registrate aquí.</p>
-
-                    <div class="cajas">
-                        <input type="text" placeholder="Correo" class="caja12" id="correo-p" />
-                        <input type="text" placeholder="Nombre de usuario" class="caja22" id="usuario-p" />
-                        <input type="text" placeholder="Contraseña" class="caja32" id="password-p" />
-                        <input type="text" placeholder="Repite contraseña" class="caja42" id="password2-p" />
-                    </div>
-
-                    <div class="boton">
-                        <button id="registrarse2" type="button">Registrarse</button>
-                    </div>
-                </div>
-
-            </section>
-        
         </>
     )
 }
