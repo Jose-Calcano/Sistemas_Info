@@ -16,10 +16,6 @@
     overflow: hidden;
 }
 
-.Sidebar{
-    flex: 1;
-    border-right: 1px solid #3e3c61;
-    background-color: #3e3c61;
-}
-.Chat{flex: 2;}
+
+
 
