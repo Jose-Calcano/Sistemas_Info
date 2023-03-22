@@ -2,12 +2,8 @@
   "functions": {
     "source": "functions"
   },
-  "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
-  },
   "hosting": {
-    "public": "public",
+    "public": "./src",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -19,8 +15,5 @@
         "destination": "/index.html"
       }
     ]
-  },
-  "storage": {
-    "rules": "storage.rules"
   }
 }

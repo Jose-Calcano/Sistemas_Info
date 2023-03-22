@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getDoctorProfile, getDoctors } from '../../firebase/doctor-service'
 import "./CatalogoPage.css"
@@ -6,7 +6,18 @@ import DoctorCard from '../../components/DoctorCard/DoctorCard'
 
 export default function CatalogoPage() {
 
-    const results = getDoctors()
+    const [doctors , setDoctors] = useState([])
+
+    const fetchDoctors = async () => {
+        const doctores = await getDoctors()
+        setDoctors(doctores)
+    }
+
+    useState(() => {
+        fetchDoctors()
+    }, [])
+
+    console.log(doctors)
 
     const resultss = [{
         name: "León",
@@ -29,11 +40,11 @@ export default function CatalogoPage() {
             <div className="doctores">
                 <h1>Doctores</h1>
                 <div className="listado">
-                    {results.size == 0 ?
+                    {doctors.length == 0 ?
                         <h1>No se encontró ningún doctor</h1>
                         :
                         <>
-                            {resultss.map((doctor) => (
+                            {doctors.map((doctor) => (
                                 <DoctorCard Data={doctor}></DoctorCard>
                             ))
                             }

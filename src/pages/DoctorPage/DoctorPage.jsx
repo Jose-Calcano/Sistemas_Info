@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getDoctorProfile } from '../../firebase/doctor-service'
 import "./DoctorPage.css"
 
 function DoctorPage() {
-    // const doctor_id = useParams().id_doctor
-    // console.log(doctor_id)
-    // const doctor = getDoctorProfile(doctor_id)
-    // console.log(doctor)
+    const doctor_id = useParams().id_doctor
+
+    const [doctor, setDoctor] = useState(null)
+
+    const fetchDoctor = async () => {
+        const doctor_2 = await getDoctorProfile(doctor_id)
+        setDoctor(doctor_2)
+    }
+
+    useEffect(() => {
+        fetchDoctor()
+    },[])
 
     const result = {
     id: "jXxVeTjsS4ZhH6JYHjx0X9Z45Q32",
@@ -16,7 +24,8 @@ function DoctorPage() {
     name: "León Serpa"
     }
 
-    const {email, age, name} = result
+    const [name, age, email] = doctor
+    
     return (
         <div className="body">
             <div className='caja'>

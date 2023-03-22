@@ -1,14 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getPatientProfile } from '../../firebase/patient-service'
 import "./PacientePage.css"
 
 function PacientePage() {
 
-    // const paciente_id = useParams().id_paciente
-    // console.log(paciente_id)
-    // const paciente = getPatientProfile(paciente_id)
-    // console.log(paciente)
+    const patient_id = useParams().id_paciente
+
+
+    const [patient, setPatient] = useState(null)
+
+    const fetchPatient = async () => {
+        const paciente = await getDoctorProfile(patient_id)
+        setPatient(paciente)
+    }
+
+    useEffect(() => {
+        fetchPatient()
+    },[])
+
+    const [name, age, email] = patient
+    
 
     const result = {
     id: "9Pna9dr2aPc3YLPMqW9o61kNWEQ2",
@@ -16,9 +28,7 @@ function PacientePage() {
     age: 0,
     name: "León Serpa"
     }
-
-    const {email, age, name} = result
-
+    
     return (
         <div className="body">
             <div className='caja'>
