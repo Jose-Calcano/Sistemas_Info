@@ -1,8 +1,8 @@
 import React from 'react'
 import './Chat.css'
-import Cam from '../img/cam.png'
-import Add from '../img/add.png'
-import More from '../img/more.png'
+import Cam from '../../../assets/cam.png'
+import Add from '../../../assets/add.png'
+import More from '../../../assets/more.png'
 import Messages from '../Messages/Messages'
 import Input from '../Input/Input'
 

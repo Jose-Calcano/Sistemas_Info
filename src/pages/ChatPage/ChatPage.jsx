@@ -1,10 +1,13 @@
 import React from 'react'  
-import Sidebar from '../../Componentes/Chat/Sidebar'
-import Chat from '../../Componentes/Chat/Chat'
+import Sidebar from '../../components/Chat/Sidebar/Sidebar'
+import Chat from '../../components/Chat/Chat_componente/Chat'
 import './ChatPage.css'
-import { CHAT_URL } from '../../constants/urls'
 
-const ChatPage = ()=> {
+
+
+
+
+export default function ChatPage() {
   return (
     <div className="chat">
       <div className='container'>
@@ -15,4 +18,4 @@ const ChatPage = ()=> {
   )
 }
 
-export default CHAT_URL
+
